@@ -7,57 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="main.js"></script>
+    <script src="variable.js"></script>
 </head>
 <body>
-    <!-- 
-        
-        이런식이면 page가 브라우저가 html을 다운받고 parsing해서 준비가 된다음 
-        그 다음 script를 만나서 patching하고 받아와 실행 
-        그래서 페이지가 다운받기전에도 준비가되서 사용자가 페이지를 볼 수 있다.
-        
-        단점: 사용자가 기본적인 html을 볼수 있다는 장점이 있지만 
-        의존적인 페이지라면 Javscript를 받아와 꾸며주는 웹사이트라면 
-        사용자가 정상적인 페이지를 보기전까지 실행하는 시간을 봐야하는 단점 
-    -->
-  <!-- <script src="main.js"></script> -->
-    <!-- 
-    async옵션을 사용하면 브라우저가 html을 다운 받아 parsing하다 병렬로 다운로드 받자라고 명령만하고 
-    진행하다 다운로드 완료되면 parsing을 멈추고 js를 실행 
-    
-    body끝에 사용하는 것보다 paching이 parsing하는 도중 병렬적으로 이동하기 떄문에
-    다운 받는 시간 절약 하지만 javscript가 html이 parsing되기전에 실행되서 
 
-    html을 parsing하는 동안 언제든지 멈출수 있어 사용자가 페이지를 보는데 단점이 있다.
-    -->
-  <!-- <script async src="main.js"></script> -->
-
-  <!-- defer옵션을 정의하면 parsing하다 defer있을때 다운로드만 받자고 명령시키고 나머지html을 parsing하고 
-    다운로드된 js를 실행 
-  
-    가장 좋은 방식 필요한 html을 parsing하는동안 필요한 js를 다운 받고 
-    html parsing하고 페이지를 보여주고 바로 이어서 js를 실행 
-
-  
-   -->
-  <!-- <script defer src="main.js"></script> -->
-
-
-  <!-- async 옵션으로 다수의 script를 받으면 먼저 다운로드 된 아이를 실행  -->
-  <!--  즉 정의된 순서상관없이 다운로드 된 아이만 실행해 만약 js에 순서에 의존적이라면 
-     async옵션을 이용하면 문제가 될 수 있다.
-   -->
-  <!-- <script async src="a.js"></script> -->
-  <!-- <script async src="b.js"></script> -->
-  <!-- <script async src="c.js"></script> -->
-    
-  <!-- 반면 defer같은 경우 parsing하는 동안 필요한 js를 받아놓은 다음 순서대로 실행해 
-    우리가 원하는대로 script가 실행  
- -->
-  <!-- <script defer src="a".js"></script> -->
-  <!-- <script defer src="b.js"></script> -->
-  <!-- <script defer src="c.js"></script> -->
-  <!-- dssdsdd -->
 
 </body>
 </html>
