@@ -6,11 +6,8 @@
 
 'use strict';
 console.log(age);
-// 2.Variable == 변수 (변경될 수 있는 값);
+// 2.Variable == 변수 (변경될 수 있는 값), rw(read/write);
 // JS == let  (added in ES6)
-
-
-
 // 두가지가 log되는 방식 == 어플리케이션을 실행하면 어플리케이션마다 사용할 수 있는 메모리 할당 
 // 이 메모리는 텅텅 빈 상자
 // 어플리케이션마다 사용할 수 있는 상자 제한
@@ -84,7 +81,23 @@ console.log(age);
 // let name;
 
 
-// 3.Constants == 한번 할당하면 값이 절대 바뀌지 X
+// 3.Constants == 한번 할당하면 값이 절대 바뀌지 X , r(read only) == x 읽기만 가능 
+// 3.Constant == 한번 할당하면 값이 절대 바뀌지 X , r(read only) == 앞에서 Variable을 단수로 적었으니 여기서도 단수로 적는 것이 좋다.
+
+const daysInWeek = 7;
+const maxNumber = 5;
+
+
+// Note!
+// Imutable data types: primitive types, frozen objects (i.e. object.freeze());
+// Mutable data types: all objects by default are mutable in JS
+// favor immutable data type always for a few reasons:
+// - security 
+// - thread safety
+// - reduce human mistakes
+
+
+
 // favor immutable data type always for a fw reasons;
 // - security (보안) - 한번 작성한 값을 다른 해커들이 코드를 이상한 것을 삽입해 값을 계속 변경하는 것을 immutable data type으로 방지할 수 있다.
 // - thread safety (스레드 안정성) -  애플리케이션이 실행될때 한가지 프로세서가 할당 -> 그 프로세서 안에 다양한 thread가 존재하는데 동시에 돌아가면서 어플리케이션을 
@@ -94,26 +107,28 @@ console.log(age);
 // 그래서 앞으로 변경될 좋은 이유가 없다면 const를 이용해 프로그램을 작성하는게 좋은데
 // 이렇게 해야 내가 나중에 코드를 변경하거나 다른 개발자가 코드를 바꿀 때 실수를 방지해줄 수 있다.
 
-
 // 정리하자면 Javascript에서 변수를 선언할때
-
 /* 
     Mutable Type(변경 가능한 유형)에 let 
     ImMutable Type(변경 불가한 유형)에 const 두가지가 있다.
 */
 
-const daysInWeek = 7;
-const maxNumber = 5;
 
 
 // 4.Variable types
 // primitive = single item: number, string, boolean, null, undefined | 더이상 나눠지지않는 타입 
+// primitive 타입의 경우 Value값 자체가 메모리에 저장된다.
 // object, box container | object = 위 single item을 여러개 묶어 한 단위로 한 박스로 관리하게 해주는 기능이 object이다. 
+// object 타입의 경우 너무 커서 메모리에 한번에 다 올라갈 수 없다. 그래서 const ellie라고 선언하고 오브젝트를 할당하게 되면 
+// ellie가 가리키고 있는 곳에 ref(레퍼런스) 가 있다. 그래서 이 ref는 실제로 오브젝트를 가리키는 곳 
+// ref를 통해서 실제로 object가 탐겨있는 메모리를 가리키게 되는 것이다.
+// 그래서 const ellie라고 선언하면 ellie 가 가리키는 포인터만 잠겨 우리가 다른 오브젝트로 변경하는 것은 불가하지만 
+// ellie에 이름과 나이는 변경이 가능한것도  그중 하나.
+
+
 // function, first-class function | function도 javscript에 데이터 타입 중 하나인데,
 // first-class function = function도 데이터 타입처럼 변수에 할당이 가능하고 그렇기에 함수의 파라미터를 인자로 도 전달이 가능하고 
 // 함수의 return type으로도 function을 return할 수 있다. 라는 뜻 
-
-
 const count = 17; // integer = 정수
 const size = 17.1; // decimal number = 소수점의 숫자 
 //  값은 다르나 type은 똑같은 number로 할당.
