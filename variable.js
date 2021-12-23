@@ -107,3 +107,127 @@ const maxNumber = 5;
 
 
 // 4.Variable types
+// primitive = single item: number, string, boolean, null, undefined | 더이상 나눠지지않는 타입 
+// object, box container | object = 위 single item을 여러개 묶어 한 단위로 한 박스로 관리하게 해주는 기능이 object이다. 
+// function, first-class function | function도 javscript에 데이터 타입 중 하나인데,
+// first-class function = function도 데이터 타입처럼 변수에 할당이 가능하고 그렇기에 함수의 파라미터를 인자로 도 전달이 가능하고 
+// 함수의 return type으로도 function을 return할 수 있다. 라는 뜻 
+
+
+const count = 17; // integer = 정수
+const size = 17.1; // decimal number = 소수점의 숫자 
+//  값은 다르나 type은 똑같은 number로 할당.
+console.log(`value: ${count}, type: ${typeof count}`);
+console.log(`value: ${size}, type: ${typeof size}`);
+
+
+// number - spicla numeric value(특별한 값): infinity, -infinity, NagativeInfinity, nAn
+// 그리고 이 세가지 값은 특별한 숫자의 값이고 이 게 중요한 이유가 나중에 DOM 요소를 javscript를 이용해 position을 
+// 바꿔 온다던지 다양한 계산이 필요할때 나누고자 하는 값이 0 인지 아닌지 숫자인지 아닌지 
+// 확인하지 않고 연산을 떄려박으면 숫자가 아닌 infinty(무한 루프)나 NaN(숫자가 아닌 값)을 받아 사용자에게 에러를 발생시킬 수 있다.
+
+// 그래서 항상 연산 할 때 그 값이 정말 valid(유요한)한 값인지 확인하고 연산하는 것이 중요하다, 
+
+
+
+const infinity = 1 / 0;  // infinity에 숫자 1을 을 0으로 나누면 infnity loof(무한 루프)를 돌게되면서 무한대의 숫자값이 생성 
+const negativeInfinity = -1 / 0; // -nagetive(긍정)의 value를 나누게 되면ㅁ -infinty(nagetive-infinity) 값이 나온다.
+const nAn = 'not a number' / 2; // 'not a number(숫자가 아닌 경우)'에 숫자로 나누게 되면 NaN이 출력
+console.log(infinity);
+console.log(negativeInfinity);
+console.log(nAn);
+
+
+// bigInt (fairy new, don't use it yet) = 새롭게 추가된 bigInt 
+// bigInt는 최근에 추가된 기능이라 크롬이랑 파이어 폭스에만 지원하고, 사파리에서 열어보면 에러가 발생한다.
+// 그래서 아직 다른 브라우저는 지원되지 않고 프로그래밍을 하면서 큰 범위의 숫자를 다루는 경우는 흔하지 않기 떄문에 
+// 그냥 추가되었다고만 인식하자!.
+const bigInt = 1234567890123456789012345678901234567890n; // over (-2**53) ~ 2*53)
+console.log(`value: ${bigInt}, type: ${typeof bigInt}`);
+Number.MAX_SAFE_INTEGER;
+
+
+// string  == 문자열 타입,
+// string은 다른 프로그래밍 언어에서 char에 들어있는 데이터 타입은 따로 있지만 
+// Javscript에서는 한가지 글자든 여러 글자든 다 string 타입으로 할당 된다.
+const char = 'c';
+const brendan = 'brendan';
+const greeting = 'hello' + brendan;
+console.log(`value: ${greeting}, type: ${typeof greeting}`);
+const helloBob = `hi ${brendan}!`; // template literals (string)
+
+// 기존의 plus type을 이용한 방법 
+// 단점 +  코드마다 +를 넣어줘야하는 단점이 있다.
+console.log('value:' + helloBob + ' type: ' + typeof helloBob);
+
+// 해결범 `` 기호를 사용면 중간에 쓰며진 간격이나 문자열이 그대로 나와 간편하게 string을 만들 수 있다.
+console.log(`value: ${helloBob}, type: ${typeof helloBob}`);
+
+
+// boolean === 참과 거짓 
+// false: 0, null, undefined, NaN, ''
+// true: 1, any, other value 
+const canRead = true;
+const test = 3 < 1; // false 
+console.log(`value: ${canRead}, type: ${typeof canRead}`);
+console.log(`value: ${test}, type: ${typeof test}`);
+
+
+// null  == '너는 텅텅 비어있는 mt값이라서 더는 아무것도 아니야';
+let nothing = null;
+console.log(`value: ${nothing}, type: ${typeof nothing}`);
+
+
+// undefined = '선언은 되었지만 아무것도 값이 지정되지 않음'
+// 텅텅 비었는지 값이 들어있는지 정해지지 않은 상태
+// let x;  // 값이 할당 되지 않는 상태도 undefined와 같다.
+
+let x = undefined; // 정해지지 않은 상태이기 떄문에 undefined도 가능하다.
+
+console.log(`value: ${x}, type: ${typeof x}`);
+
+
+// symbol, create unique identifiers for objects 
+const symbol1 = Symbol('id');
+const symbol2 = Symbol('id');
+console.log(symbol1 === symbol2);
+const gSymbol1 = Symbol.for('id');
+const gSymbol2 = Symbol.for('id');
+console.log(gSymbol1 === gSymbol2); // true
+
+// symbol은 바로 출력할때 에러가 발생한다.
+// console.log(`value: ${symbol1}, type: ${typeof symbol1}`);
+
+//  그래서 항상 .description을 이용해 string으로 변환후 출력
+console.log(`value: ${symbol1.description}, type: ${typeof symbol1}`);
+
+
+// 5. Dynamic typing: dynamically typed language
+//  C나 Java언어는 statically langauge,
+// 즉 우리가 변수를 선언할 때 어떤 타입인지 결정해서 타입을 같인 선언 하던 반면 
+// Javscript에서는 선언할때 어떤 타입인지 선언하지 않고 런타입 프로그램이 동작할 때 
+// 할당된 값에 따라서 타입이 변경될 수 있다는 것을 얘기한다.
+
+// 이런 Dynamically type language는 내가 좋은 아이디어가 있을때 빠르게 
+// Prototype(프로토타입) 하고 싶을 때는 정말 유연하게 쓸 수 있는 언어지만 다수에 엔지니어들이 아니면 
+// 어느정도 규모가 있는 프로젝트를 만들때 이런 Dynamic Type 때문에 불똥이 떨어지는 일들이 한 두번이 아닐 수 있는데,
+let text = 'hello';
+console.log(text.charAt(0));
+console.log(`value: ${text}, type: ${typeof text}`);
+text = 1;
+console.log(`value: ${text}, type: ${typeof text}`);
+text = '7' + 5;
+console.log(`value: ${text}, type: ${typeof text}`);
+text = '8' / '2';
+console.log(`value: ${text}, type: ${typeof text}`);
+console.log(text.charAt(0));
+
+
+// object, real-life object, data structure
+const ellie = {name: 'ellie', age: 20};
+
+// 각각에 포인트가 가리키고 있는 메모리에 다른값으로 할당이 가능
+ellie.name = 'ellie';
+ellie.age = 21;
+
+ 
